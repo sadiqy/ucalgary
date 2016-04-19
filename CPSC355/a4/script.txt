@@ -1,0 +1,273 @@
+Script started on Thu Mar 17 12:44:47 2016
+sh-3.00$ gdb a.out 
+GNU gdb 6.2.1
+Copyright 2004 Free Software Foundation, Inc.
+GDB is free software, covered by the GNU General Public License, and you are
+welcome to change it and/or distribute copies of it under certain conditions.
+Type "show copying" to see the conditions.
+There is absolutely no warranty for GDB.  Type "show warranty" for details.
+This GDB was configured as "sparc-sun-solaris2.10"...(no debugging symbols found)...
+(gdb) r
+Starting program: /home/ugb/sadiq.yakubu/CPSC355/assign/F2015/a4/a4/a.out 
+(no debugging symbols found)...(no debugging symbols found)...
+Initial circle values:
+Circle first origin = (0, 0) radius = 1
+Circle second origin = (0, 0) radius = 1
+
+Changed circle values:
+Circle first origin = (3, -5) radius = 1
+Circle second origin = (0, 0) radius = 7
+
+Program exited with code 0165.
+(gdb) b newCircle 
+Breakpoint 1 at 0x10780
+(gdb) r
+Starting program: /home/ugb/sadiq.yakubu/CPSC355/assign/F2015/a4/a4/a.out 
+(no debugging symbols found)...
+Breakpoint 1, 0x00010780 in newCircle ()
+(gdb) display  /i $pc
+1: x/i $pc  0x10780 <newCircle+4>:      ld  [ %i7 + 8 ], %l0
+(gdb) ni
+0x00010784 in newCircle ()
+1: x/i $pc  0x10784 <newCircle+8>:      cmp  %l0, 0xc
+(gdb) ni
+0x00010788 in newCircle ()
+1: x/i $pc  0x10788 <newCircle+12>:     bne  0x107b8 <return>
+(gdb) ni
+0x0001078c in newCircle ()
+1: x/i $pc  0x1078c <newCircle+16>:     ld  [ %fp + 0x40 ], %o0
+(gdb) ni
+0x00010790 in newCircle ()
+1: x/i $pc  0x10790 <newCircle+20>:     clr  [ %fp + -12 ]
+(gdb) ni
+0x00010794 in newCircle ()
+1: x/i $pc  0x10794 <newCircle+24>:     ld  [ %fp + -12 ], %o1
+(gdb) ni
+0x00010798 in newCircle ()
+1: x/i $pc  0x10798 <newCircle+28>:     st  %o1, [ %o0 ]
+(gdb) ni
+0x0001079c in newCircle ()
+1: x/i $pc  0x1079c <newCircle+32>:     clr  [ %fp + -8 ]
+(gdb) ni
+0x000107a0 in newCircle ()
+1: x/i $pc  0x107a0 <newCircle+36>:     ld  [ %fp + -8 ], %o1
+(gdb) ni
+0x000107a4 in newCircle ()
+1: x/i $pc  0x107a4 <newCircle+40>:     st  %o1, [ %o0 + 4 ]
+(gdb) ni
+0x000107a8 in newCircle ()
+1: x/i $pc  0x107a8 <newCircle+44>:     mov  1, %l0
+(gdb) 
+0x000107ac in newCircle ()
+1: x/i $pc  0x107ac <newCircle+48>:     st  %l0, [ %fp + -4 ]
+(gdb) ni
+0x000107b0 in newCircle ()
+1: x/i $pc  0x107b0 <newCircle+52>:     ld  [ %fp + -4 ], %o1
+(gdb) ni
+0x000107b4 in newCircle ()
+1: x/i $pc  0x107b4 <newCircle+56>:     st  %o1, [ %o0 + 8 ]
+(gdb) ni
+0x000107b8 in return ()
+1: x/i $pc  0x107b8 <return>:   jmp  %i7 + 0xc
+(gdb) b main
+Breakpoint 2 at 0x10884
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) n
+Program not restarted.
+(gdb) display  /i $pc
+2: x/i $pc  0x107b8 <return>:   jmp  %i7 + 0xc
+(gdb) ni
+0x000107bc in return ()
+2: x/i $pc  0x107bc <return+4>: restore 
+1: x/i $pc  0x107bc <return+4>: restore 
+(gdb) c
+Continuing.
+
+Breakpoint 1, 0x00010780 in newCircle ()
+2: x/i $pc  0x10780 <newCircle+4>:      ld  [ %i7 + 8 ], %l0
+1: x/i $pc  0x10780 <newCircle+4>:      ld  [ %i7 + 8 ], %l0
+(gdb) cni
+0x00010784 in newCircle ()
+2: x/i $pc  0x10784 <newCircle+8>:      cmp  %l0, 0xc
+1: x/i $pc  0x10784 <newCircle+8>:      cmp  %l0, 0xc
+(gdb) ni
+0x00010788 in newCircle ()
+2: x/i $pc  0x10788 <newCircle+12>:     bne  0x107b8 <return>
+1: x/i $pc  0x10788 <newCircle+12>:     bne  0x107b8 <return>
+(gdb) ni
+0x0001078c in newCircle ()
+2: x/i $pc  0x1078c <newCircle+16>:     ld  [ %fp + 0x40 ], %o0
+1: x/i $pc  0x1078c <newCircle+16>:     ld  [ %fp + 0x40 ], %o0
+(gdb) ni
+0x00010790 in newCircle ()
+2: x/i $pc  0x10790 <newCircle+20>:     clr  [ %fp + -12 ]
+1: x/i $pc  0x10790 <newCircle+20>:     clr  [ %fp + -12 ]
+(gdb) ni
+0x00010794 in newCircle ()
+2: x/i $pc  0x10794 <newCircle+24>:     ld  [ %fp + -12 ], %o1
+1: x/i $pc  0x10794 <newCircle+24>:     ld  [ %fp + -12 ], %o1
+(gdb) ni
+0x00010798 in newCircle ()
+2: x/i $pc  0x10798 <newCircle+28>:     st  %o1, [ %o0 ]
+1: x/i $pc  0x10798 <newCircle+28>:     st  %o1, [ %o0 ]
+(gdb) ni
+0x0001079c in newCircle ()
+2: x/i $pc  0x1079c <newCircle+32>:     clr  [ %fp + -8 ]
+1: x/i $pc  0x1079c <newCircle+32>:     clr  [ %fp + -8 ]
+(gdb) ni
+0x000107a0 in newCircle ()
+2: x/i $pc  0x107a0 <newCircle+36>:     ld  [ %fp + -8 ], %o1
+1: x/i $pc  0x107a0 <newCircle+36>:     ld  [ %fp + -8 ], %o1
+(gdb) ni
+0x000107a4 in newCircle ()
+2: x/i $pc  0x107a4 <newCircle+40>:     st  %o1, [ %o0 + 4 ]
+1: x/i $pc  0x107a4 <newCircle+40>:     st  %o1, [ %o0 + 4 ]
+(gdb) ni
+0x000107a8 in newCircle ()
+2: x/i $pc  0x107a8 <newCircle+44>:     mov  1, %l0
+1: x/i $pc  0x107a8 <newCircle+44>:     mov  1, %l0
+(gdb) ni
+0x000107ac in newCircle ()
+2: x/i $pc  0x107ac <newCircle+48>:     st  %l0, [ %fp + -4 ]
+1: x/i $pc  0x107ac <newCircle+48>:     st  %l0, [ %fp + -4 ]
+(gdb) display  \ /i $first
+3: x/i $first  Value can't be converted to integer.
+Disabling display 3 to avoid infinite recursion.
+(gdb) display/i $first     lo 0
+4: x/i $l0  0x1:        Cannot access memory at address 0x1
+Disabling display 4 to avoid infinite recursion.
+(gdb) ni
+0x000107b0 in newCircle ()
+2: x/i $pc  0x107b0 <newCircle+52>:     ld  [ %fp + -4 ], %o1
+1: x/i $pc  0x107b0 <newCircle+52>:     ld  [ %fp + -4 ], %o1
+(gdb) ni
+0x000107b4 in newCircle ()
+2: x/i $pc  0x107b4 <newCircle+56>:     st  %o1, [ %o0 + 8 ]
+1: x/i $pc  0x107b4 <newCircle+56>:     st  %o1, [ %o0 + 8 ]
+(gdb) ni
+0x000107b8 in return ()
+2: x/i $pc  0x107b8 <return>:   jmp  %i7 + 0xc
+1: x/i $pc  0x107b8 <return>:   jmp  %i7 + 0xc
+(gdb) ni
+0x000107bc in return ()
+2: x/i $pc  0x107bc <return+4>: restore 
+1: x/i $pc  0x107bc <return+4>: restore 
+(gdb) ni
+0x000108a4 in main ()
+2: x/i $pc  0x108a4 <main+36>:  sethi  %hi(0x10400), %o0
+1: x/i $pc  0x108a4 <main+36>:  sethi  %hi(0x10400), %o0
+(gdb) ni
+0x000108a8 in main ()
+2: x/i $pc  0x108a8 <main+40>:  or  %o0, 0x314, %o0     ! 0x10714 <fmt1>
+1: x/i $pc  0x108a8 <main+40>:  or  %o0, 0x314, %o0     ! 0x10714 <fmt1>
+(gdb) ni
+0x000108ac in main ()
+2: x/i $pc  0x108ac <main+44>:  call  0x20a74 <printf>
+1: x/i $pc  0x108ac <main+44>:  call  0x20a74 <printf>
+(gdb) ni
+0x000108b0 in main ()
+2: x/i $pc  0x108b0 <main+48>:  nop 
+1: x/i $pc  0x108b0 <main+48>:  nop 
+(gdb) ni
+(no debugging symbols found)...
+Initial circle values:
+0x000108b4 in main ()
+2: x/i $pc  0x108b4 <main+52>:  sethi  %hi(0x10400), %o0
+1: x/i $pc  0x108b4 <main+52>:  sethi  %hi(0x10400), %o0
+(gdb) ni
+0x000108b8 in main ()
+2: x/i $pc  0x108b8 <main+56>:  or  %o0, 0x36f, %o0     ! 0x1076f <fmt3>
+1: x/i $pc  0x108b8 <main+56>:  or  %o0, 0x36f, %o0     ! 0x1076f <fmt3>
+(gdb) ni
+0x000108bc in main ()
+2: x/i $pc  0x108bc <main+60>:  call  0x10858 <printCircle>
+1: x/i $pc  0x108bc <main+60>:  call  0x10858 <printCircle>
+(gdb) ni
+0x000108c0 in main ()
+2: x/i $pc  0x108c0 <main+64>:  add  %fp, -12, %o1
+1: x/i $pc  0x108c0 <main+64>:  add  %fp, -12, %o1
+(gdb) ni
+Circle first origin = (0, 0) radius = 1
+0x000108c4 in main ()
+2: x/i $pc  0x108c4 <main+68>:  sethi  %hi(0x10400), %o0
+1: x/i $pc  0x108c4 <main+68>:  sethi  %hi(0x10400), %o0
+(gdb) ni
+0x000108c8 in main ()
+2: x/i $pc  0x108c8 <main+72>:  or  %o0, 0x375, %o0     ! 0x10775 <fmt4>
+1: x/i $pc  0x108c8 <main+72>:  or  %o0, 0x375, %o0     ! 0x10775 <fmt4>
+(gdb) ni
+0x000108cc in main ()
+2: x/i $pc  0x108cc <main+76>:  call  0x10858 <printCircle>
+1: x/i $pc  0x108cc <main+76>:  call  0x10858 <printCircle>
+(gdb) ni
+0x000108d0 in main ()
+2: x/i $pc  0x108d0 <main+80>:  add  %fp, -24, %o1
+1: x/i $pc  0x108d0 <main+80>:  add  %fp, -24, %o1
+(gdb) ni
+Circle second origin = (0, 0) radius = 1
+0x000108d4 in main ()
+2: x/i $pc  0x108d4 <main+84>:  add  %fp, -12, %o0
+1: x/i $pc  0x108d4 <main+84>:  add  %fp, -12, %o0
+(gdb) ni
+0x000108d8 in main ()
+2: x/i $pc  0x108d8 <main+88>:  call  0x10804 <equal>
+1: x/i $pc  0x108d8 <main+88>:  call  0x10804 <equal>
+(gdb) ni
+0x000108dc in main ()
+2: x/i $pc  0x108dc <main+92>:  add  %fp, -24, %o1
+1: x/i $pc  0x108dc <main+92>:  add  %fp, -24, %o1
+(gdb) ni
+0x000108e0 in main ()
+2: x/i $pc  0x108e0 <main+96>:  cmp  %o0, 1
+1: x/i $pc  0x108e0 <main+96>:  cmp  %o0, 1
+(gdb) ni
+0x000108e4 in main ()
+2: x/i $pc  0x108e4 <main+100>: bne  0x10908 <print>
+1: x/i $pc  0x108e4 <main+100>: bne  0x10908 <print>
+(gdb) ni
+0x000108e8 in main ()
+2: x/i $pc  0x108e8 <main+104>: nop 
+1: x/i $pc  0x108e8 <main+104>: nop 
+(gdb) ni
+0x000108ec in main ()
+2: x/i $pc  0x108ec <main+108>: add  %fp, -12, %o0
+1: x/i $pc  0x108ec <main+108>: add  %fp, -12, %o0
+(gdb) ni
+0x000108f0 in main ()
+2: x/i $pc  0x108f0 <main+112>: mov  3, %o1
+1: x/i $pc  0x108f0 <main+112>: mov  3, %o1
+(gdb) ni
+0x000108f4 in main ()
+2: x/i $pc  0x108f4 <main+116>: call  0x107c8 <move>
+1: x/i $pc  0x108f4 <main+116>: call  0x107c8 <move>
+(gdb) ni
+0x000108f8 in main ()
+2: x/i $pc  0x108f8 <main+120>: mov  -5, %o2
+1: x/i $pc  0x108f8 <main+120>: mov  -5, %o2
+(gdb) ni
+0x000108fc in main ()
+2: x/i $pc  0x108fc <main+124>: add  %fp, -24, %o0
+1: x/i $pc  0x108fc <main+124>: add  %fp, -24, %o0
+(gdb) ni
+0x00010900 in main ()
+2: x/i $pc  0x10900 <main+128>: call  0x107ec <expand>
+1: x/i $pc  0x10900 <main+128>: call  0x107ec <expand>
+(gdb) ni
+0x00010904 in main ()
+2: x/i $pc  0x10904 <main+132>: mov  7, %o1
+1: x/i $pc  0x10904 <main+132>: mov  7, %o1
+(gdb) ni
+
+Changed circle values:
+Circle first origin = (3, -5) radius = 1
+Circle second origin = (0, 0) radius = 7
+
+Program exited with code 0165.
+(gdb) exit
+Undefined command: "exit".  Try "help".
+(gdb) quit
+sh-3.00$ exit
+exit
+
+script done on Thu Mar 17 12:50:10 2016
